@@ -19,5 +19,26 @@ h2::after {
   width: 650px;
   margin: 0 auto;
 }
+.blue{
+  background-color:blue;
+  color: aquamarine;
+}
+.red{
+  background-color: red;
+  color: #F5F5F5;
+}
+
+.correct_tu{
+  display: none;
+}
+
+/* .correct{
+  display: none;
+
+} */
+
+
+
+
 
 
