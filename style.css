@@ -22,15 +22,54 @@ h2::after {
 .blue{
   background-color:blue;
   color: aquamarine;
+  pointer-events: none;
 }
 .red{
   background-color: red;
   color: #F5F5F5;
+  pointer-events: none;
 }
 
 .correct_tu{
   display: none;
 }
+
+.answer_invisible{
+  display: none;
+}
+
+.answer{
+  display: block;
+  background-color: #F5F5F5;
+  padding: 13px;
+  width: 85%;
+  margin: 5px 52px;
+}
+
+.congratulation::after{
+  content: "";
+  display: block;
+  margin-top: 10px;
+  width: 9%;
+  height: 2px;
+  background-color: #22bdec;
+  position: relative;
+}
+.bad::after{
+  content: "";
+  display: block;
+  margin-top: 10px;
+  width: 9%;
+  height: 2px;
+  background-color: #f01010;
+  position: relative;
+}
+
+.pointer_events{
+  pointer-events: none;
+}
+
+
 
 /* .correct{
   display: none;
