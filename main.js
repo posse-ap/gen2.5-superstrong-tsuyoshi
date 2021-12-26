@@ -56,7 +56,7 @@ for(let i = 0; i < 10; i ++) {
 <p>正解は${Selections[i][0]}ですう</p>
 </div>`
 const quiz_box=document.getElementById("quiz_box");
-quiz_box.insertAdjacentHTML('beforeend',quiz);
+quiz_box.insertAdjacentHTML('beforebegin',quiz);
 }
 
 function button(tu){
@@ -77,6 +77,8 @@ function option(ro){
   document.getElementById(`correct_${ro}`).classList.add("blue");
   document.getElementById(`wrong_${ro}`).classList.add ("pointer_events");
 }
+
+// aaa
 
 
 
