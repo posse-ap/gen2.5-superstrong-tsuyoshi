@@ -18,7 +18,66 @@ h2::after {
   width: 650px;
   margin: 0 auto;
 }
-li{
 
+
+.wrong-answer{
+  background-color: #FF5028;
+  color: #F5F5F5;
+}
+.correct-answer{
+  background-color: #297DFE;
+  color: #F5F5F5;
 }
 
+.picture{
+  text-align: center;
+}
+
+
+.options{
+  padding: 13px 13px 13px 13px;
+  margin: 0px 10px 0px 10px;
+  border-color: #F5F5F5;
+  border: 3px solid#F5F5F5;
+  display: block;
+}
+
+.correct-box{
+  padding:0 1em;
+  display: none;
+  border: 3px solid#F5F5F5;
+  padding: auto;
+}
+
+.wrong-box{
+  padding: 0 1em;
+  display: none;
+  border: 3px solid#F5F5F5;
+  padding: auto;
+}
+
+.correct-box span::after{
+  content: "";
+  display: block;
+  width: 48px;
+  height: 2px;
+  background-color: #0089ab;
+  position: relative;
+}
+
+.wrong-box span::after{
+  content: "";
+  display: block;
+  width: 48px;
+  height: 2px;
+  background-color: #ab001d;
+  position: relative;
+}
+
+.correct-box-act{
+  display: block;
+}
+
+.wrong-box-act{
+  display: block;
+}
