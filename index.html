@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <img class="POSSE_LOGO" src="./picture/posse_logo.jpeg">
+        <p class="subtitle-top">
+          4th week
+        </p>
+    </div>
+    <button class="main-button">記録・投稿</button>
+  </header>
+  <main>
+    <div class="main-container">
+      <div class="main-leftcontainer">
+        <div class="upper-container">
+          <div class="upper-boxes">
+            <p class="upper-date">Today</p><br>
+            <p class="upper-number">18</p><br>
+            <p class="upper-unit">hour</p>
+          </div>
+          <div class="upper-boxes">
+            <p class="upper-date">Month</p><br>
+            <p class="upper-number">600</p><br>
+            <p class="upper-unit">hour</p>
+          </div>
+          <div class="upper-boxes">
+            <p class="upper-date">Total</p><br>
+            <p class="upper-number">1500</p><br>
+            <p class="upper-unit">hour</p>
+          </div>
+        </div>
+        <div class="downercontainer" id="google_chart">
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+          <script>
+          google.charts.load(
+		'current',
+		  {'packages':['bar','corechart']}
+	)
+	.then(drawChart);
+  function drawChart() {
+    var data = new google.visualization.DataTable();
+		data.addColumn('string');
+		data.addColumn('number');
+		data.addRows([
+      [" ", 4],
+      ["2", 6],
+			["", 2],
+			["4", 4],
+			["", 5],
+			["6", 8],
+			["", 4],
+			["8", 2],
+			["", 6],
+			["10", 3],
+			["", 6],
+			["12", 7],
+			["", 8],
+			["14", 7],
+			["", 1],
+      ["16", 2],
+      ["", 4],
+      ["18", 1],
+      ["", 5],
+      ["20", 7],
+      ["", 5],
+      ["22", 4],
+      ["", 5],
+      ["24", 3],
+      ["", 1],
+      ["26", 7],
+      ["", 8],
+      ["28", 3],
+      ["", 2],
+      ["30", 7],
+      ["", 4]
+		]);
+    var options = {
+			width:500 ,
+			height:350,
+      legend: {position : 'none'},
+			vAxis: {
+				format:'#h',
+        ticks:[2,4,6,8]
+			},
+      colors: [ '#00ff00']
+		};
+    var chart = new google.charts.Bar(document.getElementById('google_chart'));
+    chart.draw(data, google.charts.Bar.convertOptions(options));
+	}
+  google.charts.setOnLoadCallback(drawpieChart);
+  function drawpieChart(){
+    var piedata = google.visualization.arrayToDataTable([
+			['Category', '記事数'],
+			['Javascript', 25],
+			['CSS', 13],
+			['PHP', 12],
+			['HTML', 9],
+			['Laravel', 8],
+			['SQL', 7],
+			['SHELL', 6],
+			['情報システム基礎知識、その他', 20]
+		]);
+    var pieoptions = {
+      width: 250,
+      height: 250,
+      'chartArea': {'width': '95%', 'height': '95%'},
+      pieHole: 0.5,
+      legend: {position: 'none'},
+      colors: ['#0445EC','#0F70FD','#20BDDE','#3CCEFE','#B29EF3','#6C46EB','#4A17EF','#3005C0']
+    }
+    var chart1 = new google.visualization.PieChart(document.getElementById('piechart'));
+		chart1.draw(piedata, pieoptions);
+    
+	}
+  google.charts.setOnLoadCallback(drawpieChart2);
+  function drawpieChart2(){
+    var piedata2 = google.visualization.arrayToDataTable([
+			['Category', '記事数'],
+			['ドットインストール', 42],
+			['N予備校', 33],
+			['POSSE課題', 25],
+		]);
+    var pieoptions2 = {
+      width: 250,
+      height: 250,
+      pieHole: 0.5,
+      'chartArea': {'width': '95%', 'height': '95%'},
+      legend: {position: 'none'},
+      colors: ['#0445EC','#1270BD','#20BDDE']
+    }
+    var chart2 = new google.visualization.PieChart(document.getElementById('piechart2'));
+		chart2.draw(piedata2, pieoptions2);
+
+	}
+          </script>
+        </div>
+      </div>
+      <div class="main-rightcontainer">
+        <div class="rightcontainer" >
+          <p class="title-topic">学習言語</p>
+          <div id="piechart"></div>
+          <ul class="list">
+            <li>Javascript</li>
+            <li>CSS</li>
+            <li>PHP</li>
+            <li>HTML</li>
+            <li>Laravel</li>
+            <li>SQL</li>
+            <li>SHELL</li>
+            <li>情報システム基礎知識、その他</li>
+          </ul>
+        </div>
+        <div class="leftcontainer">
+          <p class="title-topic">学習コンテンツ</p>
+          <div id="piechart2"></div>
+          <ul　class="list2">
+            <li>ドットインストール</li>
+            <li>N予備校</li>
+            <li>POSSE課題</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-container">
+      <span>＜</span>　2020年8月　<span>＞</span>
+    </div>
+  </main>
+  <div class="modal"></div>
+  <script src="main.js"><script/>
+</body>
+</html>
