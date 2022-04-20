@@ -37,7 +37,10 @@ const twitter = document.getElementById("twitterButton1")
 const checkColor=({clicking})=>{
 	clicking.classList.toggle(`twitter-button`)
 }
+const tweet = document.getElementById("tweetBox")
+
 const loadingOpen = ({modalElement,picture,completion})=>{
+	window.open(`http://twitter.com/share?text=${tweet.value}`);
 	modalElement.classList.remove(`active`);
 	picture.classList.add(`active`);
 	setTimeout(() => {
