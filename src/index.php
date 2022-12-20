@@ -4,16 +4,21 @@ require('./data.php');
 <!DOCTYPE html>
 <html lang="ja">
 <?php 
-              $search = '%22-10%';
+              $search = '%22-11%';
               $data_stmt = $pdo->prepare('SELECT study_date, sum(time) AS time FROM carriculum WHERE study_date LIKE :search group by study_date');
               $data_stmt->execute(['search' => $search]);
               $data_results =  $data_stmt->fetchAll(PDO::FETCH_ASSOC);
               $chart_data = json_encode($data_results);
-              $circle_stmt = $pdo->prepare('SELECT name AS subject FROM carriculum WHERE study_date LIKE :search');
+              $circle_stmt = $pdo->prepare('SELECT sum(time) AS time, name AS subject FROM carriculum WHERE study_date LIKE :search group by name');
               $circle_stmt-> execute(['search' => $search]);
               $circle_results =  $circle_stmt->fetchAll(PDO::FETCH_ASSOC);
               $circle_data = json_encode($circle_results);
               echo $circle_data;
+              $content_stmt = $pdo->prepare('SELECT sum(time) AS time, contents AS content FROM carriculum WHERE study_date LIKE :search group by contents');
+              $content_stmt-> execute(['search' => $search]);
+              $content_results =  $content_stmt->fetchAll(PDO::FETCH_ASSOC);
+              $content_data = json_encode($content_results, JSON_UNESCAPED_UNICODE);
+              echo $content_data;
             ?>
 
 <head>
@@ -229,14 +234,16 @@ require('./data.php');
     }
     google.charts.setOnLoadCallback(drawpieChart);
     function drawpieChart() {
-      var piedata = google.visualization.arrayToDataTable();
       var circle_graph = <?= $circle_data ?>;
       let circle = []
-      chart.forEach(function(value, index) {
-        bar.push ([date, study_number]);
+      circle_graph.forEach(function(value, index) {
+        let lang = value.subject;
+        let time = Number(value.time);
+        circle.push([lang, time]);
       })
-      console.log(bar);
-      data.addRows(bar);
+      console.log(circle);
+      var piedata = google.visualization.arrayToDataTable(circle,true);
+      // piedata.addRows(circle);
       var pieoptions = {
         width: 180,
         height: 180,
@@ -251,12 +258,15 @@ require('./data.php');
     }
     google.charts.setOnLoadCallback(drawpieChart2);
     function drawpieChart2() {
-      var piedata2 = google.visualization.arrayToDataTable([
-        ['Category', '記事数'],
-        ['ドットインストール', 42],
-        ['N予備校', 33],
-        ['POSSE課題', 25],
-      ]);
+      var content_graph = <?= $content_data ?>;
+      let content = []
+      content_graph.forEach(function(value, index) {
+        let cont = String(value.content);
+        let time = Number(value.time);
+        content.push([cont, time]);
+      })
+      console.log(content);
+      var piedata2 = google.visualization.arrayToDataTable(content,true);
       var pieoptions2 = {
         width: 180,
         height: 180,
