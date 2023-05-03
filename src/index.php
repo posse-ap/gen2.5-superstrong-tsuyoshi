@@ -15,7 +15,7 @@ require('./data.php');
               $circle_data = json_encode($circle_results);
               echo $circle_data;
               $content_stmt = $pdo->prepare('SELECT sum(time) AS time, contents AS content FROM carriculum WHERE study_date LIKE :search group by contents');
-              $content_stmt-> execute(['search' => $search]);
+            $content_stmt-> execute(['search' => $search]);
               $content_results =  $content_stmt->fetchAll(PDO::FETCH_ASSOC);
               $content_data = json_encode($content_results, JSON_UNESCAPED_UNICODE);
               echo $content_data;
